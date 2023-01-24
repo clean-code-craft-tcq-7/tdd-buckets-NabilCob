@@ -1,7 +1,7 @@
 #define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
 
 #include "test/catch.hpp"
-
+#include "CurrentRange.h"
 
 TEST_CASE("Test charging current samples") {
   int currentSample1[] = {4, 5};
