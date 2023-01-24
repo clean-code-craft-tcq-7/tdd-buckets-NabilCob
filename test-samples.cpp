@@ -10,7 +10,7 @@ TEST_CASE("Test charging current samples") {
   int samples = CheckBatteryRange(currentSample1, sampleList1);
   
   REQUIRE(samples == sampleCount1);
-  REQUIRE(strncmp(sampleList[0], "4-5, 2", strlen("4-5, 2")));
+  REQUIRE(strncmp(sampleList1[0], "4-5, 2", strlen("4-5, 2")));
   
 
   int currentSample2[] = {5, 4};
@@ -19,7 +19,7 @@ TEST_CASE("Test charging current samples") {
   int samples = CheckBatteryRange(currentSample2, sampleList2);
 
   REQUIRE(samples == sampleCount2);
-  REQUIRE(strncmp(sampleList[0], "4-5, 2", strlen("4-5, 2")));   
+  REQUIRE(strncmp(sampleList2[0], "4-5, 2", strlen("4-5, 2")));   
 }
 
 
