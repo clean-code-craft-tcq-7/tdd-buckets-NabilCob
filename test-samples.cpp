@@ -6,13 +6,22 @@
 #include "DetectChargeRange.h"
 
 TEST_CASE("Test charge samples ranges") {
-   int arr[]= {4, 5}; 
-   int n = sizeof(arr)/sizeof(arr[0]);
+ 
    formatOutputValue.formatOutput = formatOutput;
    int nrRange;
-   nrRange = DetectChargeRangeandCount(arr, n);
+   
+   int sample1[]= {4, 5}; 
+   int n = sizeof(sample1)/sizeof(sample1[0]);  
+   nrRange = DetectChargeRangeandCount(sample1, n);
    REQUIRE(nrRange == 1);
    REQUIRE(strncmp(str[0], "4-5, 2", strlen("4-5, 2")) == 0);
+   
+   int sample2[] = {3, 3, 5, 4, 10, 11, 12};
+   n = sizeof(sample2)/sizeof(sample2[0]); 
+   nrRange = DetectChargeRangeandCount(sample2, n);
+   REQUIRE(nrRange == 2);
+   REQUIRE(strncmp(str[0], "3-5, 4", strlen("3-5, 4")) == 0);
+   REQUIRE(strncmp(str[1], "10-12, 3", strlen("10-12, 3")) == 0);
 }
 
 
