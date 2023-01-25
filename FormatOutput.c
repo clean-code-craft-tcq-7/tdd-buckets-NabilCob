@@ -9,5 +9,6 @@ void formatOutput(int min, int max, int range, int idx){
 
     str[idx] = (char*)calloc(10, sizeof(char));
     sprintf(str[idx],"%d-%d, %d", min, max, range);
+    printf("\n%s", str[idx]);
 }
 
