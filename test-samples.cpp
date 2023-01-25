@@ -25,8 +25,8 @@ TEST_CASE("Test charge samples ranges") {
    REQUIRE(strncmp(str[1], "10-12, 3", strlen("10-12, 3")) == 0);
  
    printf("\nsample3-\nRange, Readings");
-   int sample1[]= {5,4}; 
-   int n = sizeof(sample3)/sizeof(sample3[0]);  
+   int sample3[]= {5,4}; 
+   n = sizeof(sample3)/sizeof(sample3[0]);  
    nrRange = DetectChargeRangeandCount(sample3, n);
    REQUIRE(nrRange == 1);
    REQUIRE(strncmp(str[0], "4-5, 2", strlen("4-5, 2")) == 0);
