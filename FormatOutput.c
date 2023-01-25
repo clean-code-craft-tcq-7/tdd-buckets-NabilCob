@@ -7,7 +7,7 @@ FormatOutputType formatOutputValue;
 
 void formatOutput(int min, int max, int range, int idx){
 
-    str[idx] = calloc(10, sizeof(char));
+    str[idx] = (char*)calloc(10, sizeof(char));
     sprintf(str[idx],"%d-%d, %d", min, max, range);
 }
 
