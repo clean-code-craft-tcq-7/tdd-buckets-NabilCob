@@ -4,7 +4,7 @@
 #include "DetectChargeRange.h"
 #include "FormatOutput.h"
 
-int cmpfunc (const void * a, const void * b) {
+int comparsioninAscending (const void * a, const void * b) {
    return ( *(int*)a - *(int*)b );
 }
 
@@ -13,7 +13,7 @@ int DetectChargeRangeandCount(int samples[], int len){
     int counter = 0;
     int min = 0, max = 0;
 
-    qsort(samples, len, sizeof(int), cmpfunc);
+    qsort(samples, len, sizeof(int), comparsioninAscending);
   
     while((counter < len) && (max < len)){
         max = isConsecutive(samples, min, len);
