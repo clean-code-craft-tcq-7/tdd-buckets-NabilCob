@@ -37,8 +37,8 @@ TEST_CASE("Test charge samples ranges") {
    nrRange = DetectChargeRangeandCount(sample4, n);
    REQUIRE(nrRange == 3);
    REQUIRE(strncmp(str[0], "3-3, 1", strlen("3-3, 1")) == 0);
-   REQUIRE(strncmp(str[0], "5-5, 1", strlen("5-5, 1")) == 0);
-   REQUIRE(strncmp(str[0], "7-7, 1", strlen("7-7, 1")) == 0);
+   REQUIRE(strncmp(str[1], "5-5, 1", strlen("5-5, 1")) == 0);
+   REQUIRE(strncmp(str[2], "7-7, 1", strlen("7-7, 1")) == 0);
  
    printf("\nsample5-\nEmpty sample");
    nrRange = DetectChargeRangeandCount(NULL, 0);
