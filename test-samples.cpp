@@ -30,6 +30,19 @@ TEST_CASE("Test charge samples ranges") {
    nrRange = DetectChargeRangeandCount(sample3, n);
    REQUIRE(nrRange == 1);
    REQUIRE(strncmp(str[0], "4-5, 2", strlen("4-5, 2")) == 0);
+ 
+   printf("\nsample4-\nRange, Readings");
+   int sample4[]= {3, 5, 7};
+   n = sizeof(sample4)/sizeof(sample4[0]);
+   nrRange = DetectChargeRangeandCount(sample4, n);
+   REQUIRE(nrRange == 3);
+   REQUIRE(strncmp(str[0], "3-3, 1", strlen("3-3, 1")) == 0);
+   REQUIRE(strncmp(str[0], "5-5, 1", strlen("5-5, 1")) == 0);
+   REQUIRE(strncmp(str[0], "7-7, 1", strlen("7-7, 1")) == 0);
+ 
+   printf("\nsample5-\nEmpty sample");
+   nrRange = DetectChargeRangeandCount(NULL, 0);
+   REQUIRE(nrRange == 0);
 }
 
 
