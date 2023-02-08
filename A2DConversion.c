@@ -26,5 +26,5 @@ int checklimits(int value, int bitconverter){
 }
 
 int A2DConvertion(int value, int maxAmps, int bitconverter){
-     return (int)ceil((maxAmps * (float)value)/(1 << bitconverter));
+     return (int)round((maxAmps * (float)value)/(1 << bitconverter));
 }
