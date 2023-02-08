@@ -29,7 +29,6 @@ TEST_CASE("Test charge samples ranges") {
    config.bitConversion = 10;
    config.maxAmps = 15;
    size = ConvertAnalogSamplestoDigital(sample2, n, config, outputSample2); 
-   n = sizeof(sample2)/sizeof(sample2[0]); 
    nrRange = DetectChargeRangeandCount(outputSample2, size);
    REQUIRE(nrRange == 2);
    REQUIRE(strncmp(str[0], "3-5, 4", strlen("3-5, 4")) == 0);
