@@ -59,7 +59,7 @@ TEST_CASE("Test charge samples ranges") {
    REQUIRE(strncmp(str[2], "7-7, 1", strlen("7-7, 1")) == 0);
  
    printf("\nsample5-\nEmpty sample");
-   size = ConvertAnalogSamplestoDigital(NULL, 0, 0, NULL);
+   size = ConvertAnalogSamplestoDigital(NULL, 0, config, NULL);
    REQUIRE(size == 0);
    nrRange = DetectChargeRangeandCount(NULL, 0);
    REQUIRE(nrRange == 0);
