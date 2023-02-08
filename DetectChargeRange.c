@@ -29,7 +29,7 @@ int isConsecutive(int arr[], int min,  int n)
     int i;
     for(i= min + 1; i<n; i++)
     {
-        if((arr[i] - (arr[i-1]+1)) > 0)
+        if((arr[i] - arr[i-1]) > 1 )
         {
             return i;
         }
