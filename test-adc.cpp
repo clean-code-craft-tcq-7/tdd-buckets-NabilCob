@@ -4,7 +4,7 @@
 
 #include "A2DConversion.h"
 
-TEST("Test adc conversion"){
+TEST_CASE("Test adc conversion"){
 
   //Test 1
   int sample1[]= {1547, 1924};
