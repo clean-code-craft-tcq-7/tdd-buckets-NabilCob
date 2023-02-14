@@ -2,6 +2,7 @@
 #define A2D_CONVERSION_H_
 
 typedef struct{
+   int minAmps;
    int maxAmps;
    int bitConversion;
 } ADCType;
