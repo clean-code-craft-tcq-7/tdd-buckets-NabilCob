@@ -15,6 +15,7 @@ TEST_CASE("Test adc conversion")
   ADCType config;
   int n = sizeof(sample1)/sizeof(sample1[0]);  
   config.bitConversion = 12;
+  config.minAmps = 0;
   config.maxAmps = 10;
   int size = ConvertAnalogSamplestoDigital(sample1, n, config, outputSample1);
   REQUIRE(size == 2);
@@ -26,6 +27,7 @@ TEST_CASE("Test adc conversion")
   int TestSample2[] = {3, 3, 12, 11, 10, 5, 4};
   n = sizeof(sample2)/sizeof(sample2[0]);
   config.bitConversion = 10;
+  config.minAmps = 0;
   config.maxAmps = 15;
   size = ConvertAnalogSamplestoDigital(sample2, n, config, outputSample2);
   REQUIRE(size == 7);
@@ -37,6 +39,7 @@ TEST_CASE("Test adc conversion")
   int TestSample3[] = {3, 5, 7};
   n = sizeof(sample3)/sizeof(sample3[0]);
   config.bitConversion = 12;
+  config.minAmps = 0;
   config.maxAmps = 10;
   size = ConvertAnalogSamplestoDigital(sample3, n, config, outputSample3);
   REQUIRE(size == 3);
