@@ -10,8 +10,8 @@ int ConvertAnalogSamplestoDigital(int inputsample[], int sampleSize,
    for (sampleCnt = 0; sampleCnt < sampleSize; sampleCnt ++){
 
        if(checklimits(inputsample[sampleCnt], config.bitConversion)){
-           outputsample[outputCnt]= A2DConvertion(inputsample[sampleCnt],config.maxAmps,
-                           config.bitConversion);
+           outputsample[outputCnt]= mapOperatingRange(A2DConvertion(inputsample[sampleCnt],range,
+                           config.bitConversion), config.minAmps);
            outputCnt ++;
        }
    }
@@ -27,4 +27,8 @@ int checklimits(int value, int bitconverter){
 
 int A2DConvertion(int value, int maxAmps, int bitconverter){
      return (int)round((maxAmps * (float)value)/(1 << bitconverter));
+}
+
+int mapOperatingRange(int value, int minamps){
+      return value + minamps;
 }
