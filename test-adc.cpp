@@ -21,7 +21,7 @@ TEST("Test adc conversion"){
   //Test 2
   int sample2[] = {1050, 190, 197, 798, 764, 669, 314, 266};
   int outputSample2[10];
-  int TestSample2[] = {3, 3,	12, 11,	10,	5,	4};
+  int TestSample2[] = {3, 3, 12, 11, 10, 5, 4};
   n = sizeof(sample2)/sizeof(sample2[0]);
   config.bitConversion = 10;
   config.maxAmps = 15;
