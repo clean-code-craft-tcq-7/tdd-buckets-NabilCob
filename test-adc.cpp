@@ -9,7 +9,7 @@ TEST_CASE("Test adc conversion"){
   //Test 1
   int sample1[]= {1547, 1924};
   int outputSample1[10];  
-  int TestSample1[] = {4, 5}
+  int TestSample1[] = {4, 5};
   ADCType config;
   int n = sizeof(sample1)/sizeof(sample1[0]);  
   config.bitConversion = 12;
