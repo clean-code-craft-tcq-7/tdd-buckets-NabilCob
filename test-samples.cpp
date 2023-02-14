@@ -1,8 +1,7 @@
 #define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
 
 #include "test/catch.hpp"
-
-#include "DetectChargeRange.h"
+#include "DetectCurrentRangeFromSensor.h"
 
 TEST_CASE("Test charge range from sensor readings"){
   //Test 1 - Valid sample
