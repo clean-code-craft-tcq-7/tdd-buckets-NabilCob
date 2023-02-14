@@ -7,9 +7,12 @@ int ConvertAnalogSamplestoDigital(int inputsample[], int sampleSize,
 {
    int sampleCnt = 0;
    int outputCnt = 0;
+   int range = 0;
    for (sampleCnt = 0; sampleCnt < sampleSize; sampleCnt ++){
 
        if(checklimits(inputsample[sampleCnt], config.bitConversion)){
+           //Calculate range
+           range = config.maxAmps - config.minAmps;
            outputsample[outputCnt]= mapOperatingRange(A2DConvertion(inputsample[sampleCnt],range,
                            config.bitConversion), config.minAmps);
            outputCnt ++;
