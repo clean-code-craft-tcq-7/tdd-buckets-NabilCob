@@ -9,6 +9,7 @@ typedef struct{
 int checklimits(int , int );
 int A2DConvertion(int , int , int );
 int ConvertAnalogSamplestoDigital(int [], int , ADCType , int []);
+int mapOperatingRange(int , int );
 
 #endif
 
