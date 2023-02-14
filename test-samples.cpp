@@ -2,9 +2,49 @@
 
 #include "test/catch.hpp"
 
-#include "FormatOutput.h"
 #include "DetectChargeRange.h"
-#include "A2DConversion.h"
+
+TEST_CASE("Test charge range from sensor readings"){
+  //Test 1 - Valid sample
+  int sample1[]= {1547, 1924}; 
+  int n = sizeof(sample1)/sizeof(sample1[0]);  
+  ADCType config;
+  int nrRange;
+  config.bitConversion = 12;
+  config.minAmps = 0;
+  config.maxAmps = 10; 
+  formatOutputValue.formatOutput = formatOutput;
+  nrRange = DetectCurrentRangeFromADC(sample1, n, config);
+  REQUIRE(nrRange == 1);
+  REQUIRE(strncmp(str[0], "4-5, 2", strlen("4-5, 2")) == 0);
+  
+  //Test 2 - one invalid input
+  int sample2[] = {1050, 190, 197, 798, 764, 669, 314, 266};
+  n = sizeof(sample2)/sizeof(sample2[0]);
+  config.bitConversion = 10;
+  config.minAmps = 0;
+  config.maxAmps = 15;
+  nrRange = DetectCurrentRangeFromADC(sample2, n, config);
+  REQUIRE(nrRange == 2);
+  REQUIRE(strncmp(str[0], "3-5, 4", strlen("3-5, 4")) == 0);
+  REQUIRE(strncmp(str[1], "10-12, 3", strlen("10-12, 3")) == 0);
+  
+  //Test 3 - Boundary test
+  int sample3[] = {10, 190, 197, 798, 764, 669, 314, 1023};
+  n = sizeof(sample3)/sizeof(sample3[0]);
+  config.bitConversion = 10;
+  config.minAmps = -15;
+  config.maxAmps = 15;
+  nrRange = DetectCurrentRangeFromADC(sample3, n, config);
+  REQUIRE(nrRange == 2);
+  REQUIRE(strncmp(str[0], "5-9, 6", strlen("5-9, 6")) == 0);
+  REQUIRE(strncmp(str[1], "15-15, 2", strlen("15-15, 2")) == 0);
+  
+  //Test 3 - empty list
+  nrRange = DetectCurrentRangeFromADC(NULL, 0, config); 
+  REQUIRE(nrRange == 0);
+}
+
 
 TEST_CASE("Test adc conversion")
 {
@@ -45,7 +85,19 @@ TEST_CASE("Test adc conversion")
   REQUIRE(size == 3);
   REQUIRE(memcmp(outputSample3, TestSample3, sizeof(int)*size) == 0);
   
-  //Test 4
+  //Test 4 - Boundary values
+  int sample4[] = {10, 190, 197, 798, 764, 669, 314, 1023};
+  n = sizeof(sample4)/sizeof(sample4[0]);
+  int outputSample4[10];
+  int TestSample4[] = {15, 9, 9, 8, 7, 5, 6, 15};
+  config.bitConversion = 10;
+  config.minAmps = -15;
+  config.maxAmps = 15;
+  size = ConvertAnalogSamplestoDigital(sample4, n, config, outputSample4);
+  REQUIRE(size == 8);
+  REQUIRE(memcmp(outputSample4, TestSample4, sizeof(int)*size) == 0);
+  
+  //Test 5
   size = ConvertAnalogSamplestoDigital(NULL, 0, config, NULL);
   REQUIRE(size == 0);
 }
