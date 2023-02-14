@@ -52,8 +52,11 @@ TEST_CASE("Test adc conversion")
 
 TEST_CASE("Test charge samples ranges") 
 { 
+   
    printf("\nsample1-\nRange, Readings");
    int sample1[]= {4, 5}; 
+   formatOutputValue.formatOutput = formatOutput;
+   int nrRange;
    int n = sizeof(sample1)/sizeof(sample1[0]);  
    nrRange = DetectChargeRangeandCount(sample1, n);
    REQUIRE(nrRange == 1);
